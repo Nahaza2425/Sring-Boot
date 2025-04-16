@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Teléfonos</title>
+</head>
+<body>
+<h1>Agregar Teléfono</h1>
+<form action="/guardarAutor" method="post">
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" required>
+    <br>
+    <button type="submit">Guardar</button>
+</form>
+
+<h2>Lista de Teléfonos</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Teléfonoo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="autor : ${autores}">
+        <td th:text="${autor.id}"></td>
+        <td th:text="${autor.telefono}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
