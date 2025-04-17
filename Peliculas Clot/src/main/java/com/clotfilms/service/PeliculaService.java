@@ -3,11 +3,9 @@ package com.clotfilms.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.clotfilms.repository.PeliculaRepository;
 import org.springframework.stereotype.Service;
 import com.clotfilms.model.Pelicula;
-
-
+import com.clotfilms.repository.PeliculaRepository;
 
 @Service
 public class PeliculaService {
@@ -21,7 +19,7 @@ public class PeliculaService {
         return peliculaRepository.findAll();
     }
 
-    public Optional<Pelicula> obtenerPelicula(String id) {
+    public Optional<Pelicula> obtenerPelicula(Long id) {
         return peliculaRepository.findById(id);
     }
 
@@ -29,7 +27,7 @@ public class PeliculaService {
         return peliculaRepository.save(pelicula);
     }
 
-    public void eliminarPelicula(String id) {
+    public void eliminarPelicula(Long id) {
         peliculaRepository.deleteById(id);
     }
 }

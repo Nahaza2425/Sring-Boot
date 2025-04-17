@@ -18,30 +18,26 @@ public class PeliculaController {
         this.peliculaService = peliculaService;
     }
 
-    // Mostrar listado de películas
     @GetMapping
     public String listarPeliculas(Model model) {
         model.addAttribute("peliculas", peliculaService.listarPeliculas());
         return "peliculas/listado";
     }
 
-    // Formulario para agregar una nueva película
     @GetMapping("/nuevo")
     public String nuevaPelicula(Model model) {
         model.addAttribute("pelicula", new Pelicula());
         return "peliculas/formulario";
     }
 
-    // Guardar nueva película
     @PostMapping("/guardar")
     public String guardarPelicula(@ModelAttribute Pelicula pelicula) {
         peliculaService.guardarPelicula(pelicula);
         return "redirect:/peliculas";
     }
 
-    // Editar película
     @GetMapping("/editar/{id}")
-    public String editarPelicula(@PathVariable String id, Model model) {
+    public String editarPelicula(@PathVariable Long id, Model model) {
         Optional<Pelicula> peliculaOpt = peliculaService.obtenerPelicula(id);
         if (peliculaOpt.isPresent()) {
             model.addAttribute("pelicula", peliculaOpt.get());
@@ -50,9 +46,8 @@ public class PeliculaController {
         return "redirect:/peliculas";
     }
 
-    // Eliminar película
     @GetMapping("/eliminar/{id}")
-    public String eliminarPelicula(@PathVariable String id) {
+    public String eliminarPelicula(@PathVariable Long id) {
         peliculaService.eliminarPelicula(id);
         return "redirect:/peliculas";
     }

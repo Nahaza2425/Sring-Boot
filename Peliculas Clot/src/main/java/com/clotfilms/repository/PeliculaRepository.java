@@ -1,8 +1,8 @@
 package com.clotfilms.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.clotfilms.model.Pelicula;
 
-public interface PeliculaRepository extends MongoRepository<Pelicula, String> {
-    // Puedes definir métodos de consulta personalizados si es necesario
+public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
+    // Métodos personalizados si son necesarios
 }
